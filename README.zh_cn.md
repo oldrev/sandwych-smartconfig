@@ -23,7 +23,7 @@ Sandwych.SmartConfig 从零开始实现的微信 AirKiss 和乐鑫 ESPTouch 的 WiFi SmartCon
 
 ### 支持平台
 
-.NET Standard 2.0+
+* .NET Standard 2.0+
 
 ### 安装
 
@@ -34,7 +34,7 @@ Sandwych.SmartConfig 从零开始实现的微信 AirKiss 和乐鑫 ESPTouch 的 WiFi SmartCon
 
 ### 简单调用本库进行配网
 
-已 ESPTouch 协议为例：
+以 ESPTouch 协议为例：
 
 ```csharp
 
@@ -74,12 +74,14 @@ APK 下载地址： TODO
 
 假如本项目对你有用，可以考虑请我喝杯啤酒:
 
-微信打赏：
+微信打赏二维码：
 
 ![微信](https://github.com/oldrev/sandwych-smartconfig/blob/master/assets/wechat_qrcode.png)
 
 
 * BTW 如果你需要在本项目贡献者处留名，打赏时请备注。
+
+当然，也非常欢迎你测试提交 bug、贡献代码、帮其他用户解决问题、编写文档，这些都是金钱不能衡量的。
 
 ## 贡献者
 

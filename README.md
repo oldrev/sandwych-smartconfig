@@ -1,85 +1,82 @@
-# Project Title
+# Sandwych.SmartConfig
 
-One Paragraph of project description goes here
+Sandwych.SmartConfig is a pure C# implementation of various WiFi SmartConfig protocols that build from scretch.
+
+(ÖÐÎÄÎÄµµ)[README.md]
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+## Features
+
+* A .NET Standard class library, works on both Xamarin and desktop.
+* No third-party library referenced.
+* Supported protocols currently: WeChat's AirKiss and Espressif's ESPTouch.
+* Clean architecture, easy to learn and add your own protocol.
+* IoC container frendly.
+
+## Getting Started
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+* Microsoft Visual Studio 2019 
+* DocFX for API documents generation (Optional)
+
+### Supported Platforms
+
+* .NET Standard 2.0+
+
+### Installation
+
+
+## Examples
+
+### Usage
+
+```csharp
+
+var provider = new EspSmartConfigProvider();
+var ctx = provider.CreateContext();
+
+ctx.DeviceDiscoveredEvent += (s, e) => {
+	Console.Write("Found device: IP={0}, MAC={1}", e.Device.IPAddress, e.Device.MacAddress);
+};
+
+var scArgs = new SmartConfigArguments()
+{
+	Ssid = "YourWiFiSSID",
+	Bssid = PhysicalAddress.Parse("10-10-10-10-10-10"),
+	Password = "YourWiFiPassword"
+	LocalAddress = IPAddress.Parse("192.168.1.10")
+};
+
+// Do the SmartConfig job
+using (var job = new SmartConfigJob(TimeSpan.FormSeconds(20))) // Set the time out to 20 seconds
+{
+	await job.ExecuteAsync(ctx, scArgs);
+}
 
 ```
-Give examples
-```
 
-### Installing
+### The Demo Android App
 
-A step by step series of examples that tell you how to get a development env running
+APK Download: TODO
 
-Say what the step will be
+## Donation
 
-```
-Give the example
-```
+If this project is useful to you, you can buy me a beer:
 
-And repeat
+[![Support via PayPal.me](https://cdn.rawgit.com/oldrev/sandwych-smartconfig/assets/paypal_button.svg)](https://www.paypal.me/oldrev)
 
-```
-until finished
-```
+## Contributiors
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Li "oldrev" Wei** - *Init work and the main maintainer* - [oldrev](https://github.com/oldrev)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Copyright &copy; Sandwych.SmartConfig Contributors.
 
-## Acknowledgments
+[LICENSE.md](LICENSE.md)¡£
 
-* Espressif's EsptouchForAndroid: https://github.com/EspressifApp/EsptouchForAndroid
+## Credits
+
+* Espressif EsptouchForAndroid: https://github.com/EspressifApp/EsptouchForAndroid
