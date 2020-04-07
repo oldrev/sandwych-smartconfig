@@ -46,8 +46,8 @@ var ctx = provider.CreateContext();
 
 // 设备通过 UDP 广播回报 IP 以后引发此事件，注意同一个设备 IP 只会触发一次
 ctx.DeviceDiscoveredEvent += (s, e) => {
-	// 这里如果涉及更新 UI 的话需要同步到主线程
-	Console.Write("Found device: IP={0}, MAC={1}", e.Device.IPAddress, e.Device.MacAddress);
+	// 这里如果涉及更新 GUI 的话需要同步到主线程
+	Console.WriteLine("Found device: IP={0}    MAC={1}", e.Device.IPAddress, e.Device.MacAddress);
 };
 
 // 设置配网参数
@@ -60,7 +60,7 @@ var scArgs = new SmartConfigArguments()
 };
 
 // 调用 SmartConfigJob 进行实际的配网
-using (var job = new SmartConfigJob(TimeSpan.FormSeconds(20))) // 设置最长配网时间 20秒
+using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // 设置最长配网时间 20秒
 {
 	await job.ExecuteAsync(ctx, scArgs);
 }
