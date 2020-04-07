@@ -2,7 +2,7 @@
 
 Sandwych.SmartConfig is a pure C# implementation of various WiFi SmartConfig protocols that build from scretch.
 
-[中文文档](README.md)
+English | [简体中文](README.zh_cn.md)
 
 ## Getting Started
 
