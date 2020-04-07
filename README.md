@@ -10,7 +10,7 @@ English | [简体中文](README.zh_cn.md)
 
 * A .NET Standard class library, works on both Xamarin and desktop.
 * No third-party library referenced.
-* Supported protocols currently: WeChat's AirKiss and Espressif's ESPTouch.
+* Supported protocols: WeChat's AirKiss and Espressif's ESPTouch.
 * Clean architecture, easy to learn and add your own protocol.
 * IoC container friendly.
 
