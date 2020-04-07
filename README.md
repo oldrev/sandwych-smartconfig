@@ -38,19 +38,19 @@ var provider = new EspSmartConfigProvider();
 var ctx = provider.CreateContext();
 
 ctx.DeviceDiscoveredEvent += (s, e) => {
-	Console.Write("Found device: IP={0}, MAC={1}", e.Device.IPAddress, e.Device.MacAddress);
+	Console.WriteLine("Found device: IP={0}    MAC={1}", e.Device.IPAddress, e.Device.MacAddress);
 };
 
 var scArgs = new SmartConfigArguments()
 {
 	Ssid = "YourWiFiSSID",
 	Bssid = PhysicalAddress.Parse("10-10-10-10-10-10"),
-	Password = "YourWiFiPassword"
+	Password = "YourWiFiPassword",
 	LocalAddress = IPAddress.Parse("192.168.1.10")
 };
 
 // Do the SmartConfig job
-using (var job = new SmartConfigJob(TimeSpan.FormSeconds(20))) // Set the time out to 20 seconds
+using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // Set the time out to 20 seconds
 {
 	await job.ExecuteAsync(ctx, scArgs);
 }
