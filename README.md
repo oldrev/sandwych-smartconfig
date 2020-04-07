@@ -1,3 +1,6 @@
+[![构建状态](https://ci.appveyor.com/api/projects/status/TODO?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-smartconfig)
+[![NuGet](https://img.shields.io/nuget/v/Sandwych.SmartConfig.svg)](https://www.nuget.org/packages/Sandwych.SmartConfig)
+
 # Sandwych.SmartConfig
 
 Sandwych.SmartConfig is a pure C# implementation of various WiFi SmartConfig protocols that build from scratch.
