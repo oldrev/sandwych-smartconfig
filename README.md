@@ -2,6 +2,8 @@
 
 Sandwych.SmartConfig is a pure C# implementation of various WiFi SmartConfig protocols that build from scratch.
 
+TD;LR: If you working on a Xamarin mobile app to deal with WiFi-capability IoT devices, you may need this library.
+
 English | [简体中文](README.zh_cn.md)
 
 ## Getting Started
