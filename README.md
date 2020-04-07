@@ -61,7 +61,7 @@ using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // Set the time o
 
 ### The Demo Android App
 
-APK Download: TODO
+APK Download: WIP
 
 ## Donation
 
