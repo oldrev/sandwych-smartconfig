@@ -65,7 +65,7 @@ APK Download: TODO
 
 If this project is useful to you, you can buy me a beer:
 
-[![Support via PayPal.me](https://cdn.rawgit.com/oldrev/sandwych-smartconfig/assets/paypal_button.svg)](https://www.paypal.me/oldrev)
+[![Support via PayPal.me](https://github.com/oldrev/sandwych-smartconfig/blob/master/assets/paypal_button.svg)](https://www.paypal.me/oldrev)
 
 ## Contributiors
 
