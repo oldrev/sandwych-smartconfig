@@ -12,7 +12,7 @@ English | [简体中文](README.zh_cn.md)
 * No third-party library referenced.
 * Supported protocols currently: WeChat's AirKiss and Espressif's ESPTouch.
 * Clean architecture, easy to learn and add your own protocol.
-* IoC container frendly.
+* IoC container friendly.
 
 ## Getting Started
 
