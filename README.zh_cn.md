@@ -1,6 +1,9 @@
+[![构建状态](https://ci.appveyor.com/api/projects/status/TODO?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-smartconfig)
+[![NuGet](https://img.shields.io/nuget/v/Sandwych.SmartConfig.svg)](https://www.nuget.org/packages/Sandwych.SmartConfig)
+
 # Sandwych.SmartConfig
 
-Sandwych.SmartConfig 从零开始实现的微信 AirKiss 和乐鑫 ESPTouch 的 WiFi SmartConfig 配网功能库。
+一个从零开始实现的微信 AirKiss 和乐鑫 ESPTouch 的 WiFi SmartConfig 配网功能库。
 
 [English](README.md) | 简体中文
 
