@@ -1,6 +1,6 @@
 # Sandwych.SmartConfig
 
-Sandwych.SmartConfig is a pure C# implementation of various WiFi SmartConfig protocols that build from scretch.
+Sandwych.SmartConfig is a pure C# implementation of various WiFi SmartConfig protocols that build from scratch.
 
 English | [简体中文](README.zh_cn.md)
 
