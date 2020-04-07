@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">WiFi SmartConfig Demo App</string>
+    <string name="action_settings">Settings</string>
+</resources>

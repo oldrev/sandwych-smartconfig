@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main">
+
+    <TableLayout
+        android:padding="5dp"
+        android:layout_width="fill_parent" android:background="#f0f0f0"
+        android:layout_height="wrap_content" >
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="Protocol:"
+                android:textAlignment="viewStart"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_column="0" />
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_column="1">
+                <RadioButton
+                    android:id="@+id/radio_red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ESPTouch" />
+                <RadioButton
+                    android:id="@+id/radio_green"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WeChat AirKiss" />
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="SSID:"
+                android:textAlignment="viewStart"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_column="0" />
+            <TextView
+                android:text="SSSSS"
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="viewStart"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_column="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:text="BSSID:"
+                android:textAlignment="viewStart"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_column="0" />
+            <TextView
+                android:text="BSSSSS"
+                android:textColor="@color/colorPrimary"
+                android:textAlignment="viewStart"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_column="1" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_span="2" 
+                android:password="true"
+                app:passwordToggleEnabled="true"
+                android:hint="WiFi Password"/>
+        </TableRow>
+
+    </TableLayout>
+
+    <ListView
+        android:id="@+id/deviceListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>
