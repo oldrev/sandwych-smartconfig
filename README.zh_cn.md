@@ -1,53 +1,53 @@
 # Sandwych.SmartConfig
 
-Sandwych.SmartConfig ���㿪ʼʵ�ֵ�΢�� AirKiss ������ ESPTouch �� WiFi SmartConfig �������ܿ⡣
+Sandwych.SmartConfig 从零开始实现的微信 AirKiss 和乐鑫 ESPTouch 的 WiFi SmartConfig 配网功能库。
 
-## ����
+## 特性
 
-* ʹ�ô� C# �� .NET BCL �� `UDPClient` ��ʵ�֣��������豸���һ������ĵ�����������ͬʱ���� Xamarin �ֻ� App �����棻
-* Ŀǰ֧�ֵ�Э�飺AirKiss��ESPTouch��
-* �����ٶȿ죬�����Ժã�
-* �����������չ����������������Э�飬Ҳ�ɲο�����Ŀ��д�������Ե� AirKiss �� ESPTouch ʵ�֣�
-* IoC �����Ѻã�
-* ���첽���
+* 使用纯 C# 和 .NET BCL 的 `UDPClient` 类实现，不依赖设备厂家或其他的第三方包，可同时用于 Xamarin 手机 App 或桌面；
+* 目前支持的协议：AirKiss、ESPTouch；
+* 配网速度快，兼容性好；
+* 设计清晰可扩展，可自行增加其他协议，也可参考本项目编写其他语言的 AirKiss 和 ESPTouch 实现；
+* IoC 容器友好；
+* 纯异步设计
 
-һ����˵����������� .NET �� Xamarin �����漰 WiFi �������豸���ֻ� App���� Sandwych.SmartConfig ���������õ��ġ�
+一般来说，如果你想用 .NET 的 Xamarin 开发涉及 WiFi 物联网设备的手机 App，那 Sandwych.SmartConfig 是你必须会用到的。
 
-## ��������
+## 快速上手
 
 
-### ǰ������
+### 前置需求
 
-* Microsoft Visual Studio 2019����������漴�ɣ�
-* DocFX �������� API �ĵ�����ѡ��
+* Microsoft Visual Studio 2019（免费社区版即可）
+* DocFX 用于生成 API 文档（可选）
 
-### ֧��ƽ̨
+### 支持平台
 
 * .NET Standard 2.0+
 
-### ��װ
+### 安装
 
-�� Sandwych.SmartConfig ͨ�� **[NuGet](http://www.google.com)** ��װ�������Ŀ�м���ʹ�á�
+把 Sandwych.SmartConfig 通过 **[NuGet](http://www.google.com)** 安装到你的项目中即可使用。
 
 
-## ����
+## 例子
 
-### �򵥵��ñ����������
+### 简单调用本库进行配网
 
-�� ESPTouch Э��Ϊ����
+以 ESPTouch 协议为例：
 
 ```csharp
 
 var provider = new EspSmartConfigProvider();
 var ctx = provider.CreateContext();
 
-// �豸ͨ�� UDP �㲥�ر� IP �Ժ��������¼���ע��ͬһ���豸 IP ֻ�ᴥ��һ��
+// 设备通过 UDP 广播回报 IP 以后引发此事件，注意同一个设备 IP 只会触发一次
 ctx.DeviceDiscoveredEvent += (s, e) => {
-	// ��������漰���� UI �Ļ���Ҫͬ�������߳�
+	// 这里如果涉及更新 UI 的话需要同步到主线程
 	Console.Write("Found device: IP={0}, MAC={1}", e.Device.IPAddress, e.Device.MacAddress);
 };
 
-// ������������
+// 设置配网参数
 var scArgs = new SmartConfigArguments()
 {
 	Ssid = "YourWiFiSSID",
@@ -56,43 +56,43 @@ var scArgs = new SmartConfigArguments()
 	LocalAddress = IPAddress.Parse("192.168.1.10")
 };
 
-// ���� SmartConfigJob ����ʵ�ʵ�����
-using (var job = new SmartConfigJob(TimeSpan.FormSeconds(20))) // ���������ʱ�� 20��
+// 调用 SmartConfigJob 进行实际的配网
+using (var job = new SmartConfigJob(TimeSpan.FormSeconds(20))) // 设置最长配网时间 20秒
 {
 	await job.ExecuteAsync(ctx, scArgs);
 }
 
 ```
 
-### ʹ�����ӳ���
+### 使用例子程序
 
-����Ŀ������һ��ͨ�õ� Xamarin.Android ����������Ϊ���ӣ������б������У�Ҳ��ֱ�����ر���õ� `.APK` ��װ���ԣ�
+本项目包括了一个通用的 Xamarin.Android 配网程序作为例子，可自行编译运行，也可直接下载编译好的 `.APK` 安装测试：
 
-APK ���ص�ַ�� TODO
+APK 下载地址： TODO
 
-## ֧�ֱ���Ŀ
+## 支持本项目
 
-���籾��Ŀ�������ã����Կ������Һȱ�ơ��:
+假如本项目对你有用，可以考虑请我喝杯啤酒:
 
-΢�Ŵ��Ͷ�ά�룺
+微信打赏二维码：
 
-![΢��](https://github.com/oldrev/sandwych-smartconfig/blob/master/assets/wechat_qrcode.png)
+![微信](https://github.com/oldrev/sandwych-smartconfig/blob/master/assets/wechat_qrcode.png)
 
 
-* BTW �������Ҫ�ڱ���Ŀ�����ߴ�����������ʱ�뱸ע��
+* BTW 如果你需要在本项目贡献者处留名，打赏时请备注。
 
-��Ȼ��Ҳ�ǳ���ӭ������ύ bug�����״��롢�������û�������⡢��д�ĵ�����Щ���ǽ�Ǯ���ܺ����ġ�
+当然，也非常欢迎你测试提交 bug、贡献代码、帮其他用户解决问题、编写文档，这些都是金钱不能衡量的。
 
-## ������
+## 贡献者
 
-* **��ά** - *��ʼ��������ά����* - [oldrev](https://github.com/oldrev)
+* **李维** - *初始开发及现维护者* - [oldrev](https://github.com/oldrev)
 
-## ��ȨЭ��
+## 授权协议
 
-��Ȩ���� &copy; Sandwych.SmartConfig �����ߡ�
+版权所有 &copy; Sandwych.SmartConfig 贡献者。
 
-����Ŀʹ�� MIT Э����Ȩ��������� [LICENSE.md](LICENSE.md)��
+本项目使用 MIT 协议授权，详情见： [LICENSE.md](LICENSE.md)。
 
-## ��л
+## 致谢
 
-* ���� EsptouchForAndroid: https://github.com/EspressifApp/EsptouchForAndroid
+* 乐鑫 EsptouchForAndroid: https://github.com/EspressifApp/EsptouchForAndroid
