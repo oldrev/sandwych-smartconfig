@@ -55,7 +55,7 @@ var scArgs = new SmartConfigArguments()
 };
 
 // Do the SmartConfig job
-using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // Set the time out to 20 seconds
+using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // Set the timeout to 20 seconds
 {
 	await job.ExecuteAsync(ctx, scArgs);
 }
