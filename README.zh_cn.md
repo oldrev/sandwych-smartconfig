@@ -2,6 +2,9 @@
 
 Sandwych.SmartConfig 从零开始实现的微信 AirKiss 和乐鑫 ESPTouch 的 WiFi SmartConfig 配网功能库。
 
+[English](README.md) | 简体中文
+
+
 ## 特性
 
 * 使用纯 C# 和 .NET BCL 的 `UDPClient` 类实现，不依赖设备厂家或其他的第三方包，可同时用于 Xamarin 手机 App 或桌面；
