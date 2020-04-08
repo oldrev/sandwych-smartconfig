@@ -18,9 +18,8 @@ install:
   - ps: $IsReleaseBranch = ($env:APPVEYOR_REPO_BRANCH -eq "master" -Or $env:APPVEYOR_REPO_BRANCH -eq "release")
 build_script:
   # Ensure we are not using the myget feed for dependencies
-  - ps: if ($IsReleaseBranch) { copy NuGet.release.config NuGet.config }
   - dotnet --version
-  - dotnet pack -c Release
+  - dotnet pack Sandwych.SmartConfig.sln -c Release
 test_script:
   - dotnet test .\test\Sandwych.SmartConfig.Tests\Sandwych.SmartConfig.Tests.csproj -c Release
 artifacts:
