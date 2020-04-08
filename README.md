@@ -1,4 +1,4 @@
-[![AppveyorStatus](https://ci.appveyor.com/api/projects/status/TODO?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-smartconfig)
+[![Build status](https://ci.appveyor.com/api/projects/status/y4vy6qr9k0xj8e7y/branch/master?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-smartconfig/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/Sandwych.SmartConfig.svg)](https://www.nuget.org/packages/Sandwych.SmartConfig)
 
 # Sandwych.SmartConfig
