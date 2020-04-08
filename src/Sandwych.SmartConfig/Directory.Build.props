@@ -7,10 +7,16 @@
     <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
     <VersionPrefix>1.0.0-beta-$(BuildNumber)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
-    <PackageId>Jint</PackageId>
-    <PackageTags>javascript, interpreter</PackageTags>
+    <PackageId>Sandwych.SmartConfig</PackageId>
+    <PackageTags>smartconfig, airkiss, esptouch, esp8266, esp32, xamarin</PackageTags>
     <PackageProjectUrl>https://github.com/oldrev/sandwych-smartconfig</PackageProjectUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/oldrev/sandwych-smartconfig/master/LICENSE.md</PackageLicenseUrl>
+    <Copyright>© Li 'oldre' Wei. All rights reserved.</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 
     <!-- SourceLink support -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
