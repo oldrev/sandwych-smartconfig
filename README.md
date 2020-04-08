@@ -1,4 +1,4 @@
-[![构建状态](https://ci.appveyor.com/api/projects/status/TODO?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-smartconfig)
+[![AppveyorStatus](https://ci.appveyor.com/api/projects/status/TODO?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-smartconfig)
 [![NuGet](https://img.shields.io/nuget/v/Sandwych.SmartConfig.svg)](https://www.nuget.org/packages/Sandwych.SmartConfig)
 
 # Sandwych.SmartConfig
@@ -32,6 +32,7 @@ English | [简体中文](README.zh_cn.md)
 
 ### Installation
 
+Install Sandwych.SmartConfig to your project by [NuGet](https://www.nuget.org/packages/Sandwych.SmartConfig) then you're good to go.
 
 ## Examples
 
@@ -78,9 +79,9 @@ If this project is useful to you, you can buy me a beer:
 
 ## License
 
-Copyright &copy; Sandwych.SmartConfig Contributors.
+Licensed under the MIT License. Copyright &copy; Sandwych.SmartConfig Contributors.
 
-[LICENSE.md](LICENSE.md)。
+See [LICENSE.md](LICENSE.md) for details.
 
 ## Credits
 

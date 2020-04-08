@@ -33,8 +33,7 @@
 
 ### 安装
 
-把 Sandwych.SmartConfig 通过 **[NuGet](http://www.google.com)** 安装到你的项目中即可使用。
-
+把 Sandwych.SmartConfig 通过 **[NuGet](https://www.nuget.org/packages/Sandwych.SmartConfig)** 安装到你的项目中即可使用。
 
 ## 例子
 
