@@ -21,7 +21,7 @@ build_script:
   - dotnet --version
   - dotnet pack Sandwych.SmartConfig.sln -c Release
 test_script:
-  - dotnet test .\test\Sandwych.SmartConfig.Tests\Sandwych.SmartConfig.Tests.csproj -c Release
+  - dotnet test .\test\Sandwych.SmartConfig.Test\Sandwych.SmartConfig.Test.csproj -c Release
 artifacts:
   - path: 'src\**\*.nupkg'
 deploy:  
