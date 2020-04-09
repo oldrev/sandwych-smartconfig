@@ -1,6 +1,6 @@
 ﻿namespace Sandwych.SmartConfig
 {
-    public static class StandardProperties
+    public static class StandardOptionNames
     {
         public const string BroadcastingTargetPort = "std.btp";
         public const string ListeningPort = "std.lp";

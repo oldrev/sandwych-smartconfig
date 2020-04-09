@@ -34,7 +34,7 @@ namespace Sandwych.SmartConfig.Networking
 
             try
             {
-                _broadcastTarget = new IPEndPoint(IPAddress.Broadcast, context.GetOption<int>(StandardProperties.BroadcastingTargetPort));
+                _broadcastTarget = new IPEndPoint(IPAddress.Broadcast, context.GetOption<int>(StandardOptionNames.BroadcastingTargetPort));
                 var encoder = context.Provider.CreateProcedureEncoder();
                 var segments = encoder.Encode(context, args);
                 var broadcastBuffer = this.CreateBroadcastBuffer(segments.SelectMany(x => x.Frames));
@@ -53,7 +53,7 @@ namespace Sandwych.SmartConfig.Networking
             byte[] broadcastBuffer,
             CancellationToken userCancelToken)
         {
-            var segmentInterval = context.GetOption<TimeSpan>(StandardProperties.SegmentInterval);
+            var segmentInterval = context.GetOption<TimeSpan>(StandardOptionNames.SegmentInterval);
             while (true)
             {
                 userCancelToken.ThrowIfCancellationRequested();
@@ -95,7 +95,7 @@ namespace Sandwych.SmartConfig.Networking
         private async Task BroadcastSegmentForeverAsync(
             SmartConfigContext context, Segment segment, byte[] broadcastBuffer, CancellationToken token)
         {
-            var segmentInterval = context.GetOption<TimeSpan>(StandardProperties.SegmentInterval);
+            var segmentInterval = context.GetOption<TimeSpan>(StandardOptionNames.SegmentInterval);
             while (true)
             {
                 await this.BroadcastSingleSegmentAsync(segment, broadcastBuffer, segmentInterval, token);
@@ -105,7 +105,7 @@ namespace Sandwych.SmartConfig.Networking
         private async Task BroadcastSegmentByTimesAsync(
             SmartConfigContext context, Segment segment, byte[] broadcastBuffer, CancellationToken token)
         {
-            var segmentInterval = context.GetOption<TimeSpan>(StandardProperties.FrameInterval);
+            var segmentInterval = context.GetOption<TimeSpan>(StandardOptionNames.FrameInterval);
             for (int i = 0; i < segment.BroadcastingMaxTimes; i++)
             {
                 await this.BroadcastSingleSegmentAsync(segment, broadcastBuffer, segmentInterval, token);

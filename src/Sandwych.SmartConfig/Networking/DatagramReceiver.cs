@@ -49,7 +49,7 @@ namespace Sandwych.SmartConfig.Networking
 
         private void SetupSocket(SmartConfigContext context)
         {
-            var listeningPort = context.GetOption<int>(StandardProperties.ListeningPort);
+            var listeningPort = context.GetOption<int>(StandardOptionNames.ListeningPort);
             _listeningSocket.Bind(new IPEndPoint(IPAddress.Any, listeningPort));
         }
 

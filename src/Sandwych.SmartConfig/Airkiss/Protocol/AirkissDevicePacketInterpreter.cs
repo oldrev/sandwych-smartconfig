@@ -17,7 +17,7 @@ namespace Sandwych.SmartConfig.Airkiss.Protocol
 
         public bool Validate(SmartConfigContext context, byte[] packet)
         {
-            var randomValue = context.GetOption<byte>(AirkissProperties.RandomNumber);
+            var randomValue = context.GetOption<byte>(AirkissOptionNames.RandomNumber);
             return (packet.Length == AirkissWellknownConstants.DevicePacketLength && packet[0] == randomValue);
         }
     }

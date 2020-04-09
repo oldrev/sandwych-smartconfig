@@ -34,15 +34,15 @@ namespace Sandwych.Esptouch.Test.Esptouch.Protocol
         [Test]
         public void ByteToPacketFramesShouldBeOk()
         {
-            var result = EspDatumFrameEncoder.ByteToFrames(0x14, 0x4D);
-            Assert.AreEqual(0xE4, result.Item1);
-            Assert.AreEqual(0x114, result.Item2);
-            Assert.AreEqual(0xED, result.Item3);
+            var result = EspDatumFrameEncoder.ByteToFrames(0x14, 0x4D).ToArray();
+            Assert.AreEqual(268, result[0]);
+            Assert.AreEqual(316, result[1]);
+            Assert.AreEqual(277, result[2]);
 
-            result = EspDatumFrameEncoder.ByteToFrames(0x0C, 0x69);
-            Assert.AreEqual(0x46, result.Item1);
-            Assert.AreEqual(0x10C, result.Item2);
-            Assert.AreEqual(0xB9, result.Item3);
+            result = EspDatumFrameEncoder.ByteToFrames(0x0C, 0x69).ToArray();
+            Assert.AreEqual(110, result[0]);
+            Assert.AreEqual(308, result[1]);
+            Assert.AreEqual(225, result[2]);
         }
 
         [Test]

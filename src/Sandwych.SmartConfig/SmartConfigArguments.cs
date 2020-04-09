@@ -8,7 +8,7 @@ namespace Sandwych.SmartConfig
 {
     public class SmartConfigArguments
     {
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
         public string Ssid { get; set; }
         public PhysicalAddress Bssid { get; set; }
         public IPAddress LocalAddress { get; set; }
