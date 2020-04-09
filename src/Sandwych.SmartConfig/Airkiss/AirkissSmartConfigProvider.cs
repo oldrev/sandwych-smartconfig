@@ -13,17 +13,17 @@ namespace Sandwych.SmartConfig.Airkiss
 
         public override IEnumerable<(string key, object value)> GetDefaultOptions()
         {
-            yield return (StandardProperties.BroadcastingTargetPort, 10001); // The port to broadcast doesn't matter
-            yield return (StandardProperties.ListeningPort, 10000);
-            yield return (StandardProperties.FrameInterval, TimeSpan.FromMilliseconds(0));
-            yield return (StandardProperties.SegmentInterval, TimeSpan.FromMilliseconds(5));
-            yield return (StandardProperties.GuideCodeTimeout, TimeSpan.FromSeconds(2));
+            yield return (StandardOptionNames.BroadcastingTargetPort, 10001); // The port to broadcast doesn't matter
+            yield return (StandardOptionNames.ListeningPort, 10000);
+            yield return (StandardOptionNames.FrameInterval, TimeSpan.FromMilliseconds(0));
+            yield return (StandardOptionNames.SegmentInterval, TimeSpan.FromMilliseconds(5));
+            yield return (StandardOptionNames.GuideCodeTimeout, TimeSpan.FromSeconds(2));
 
-            yield return (AirkissProperties.MagicCodeTimeout, TimeSpan.FromMilliseconds(500));
-            yield return (AirkissProperties.PrefixCodeTimeout, TimeSpan.FromMilliseconds(500));
+            yield return (AirkissOptionNames.MagicCodeTimeout, TimeSpan.FromMilliseconds(500));
+            yield return (AirkissOptionNames.PrefixCodeTimeout, TimeSpan.FromMilliseconds(500));
 
             var randomValue = (byte)(Environment.TickCount % 256);
-            yield return (AirkissProperties.RandomNumber, randomValue);
+            yield return (AirkissOptionNames.RandomNumber, randomValue);
         }
 
         public override IProcedureEncoder CreateProcedureEncoder()

@@ -14,12 +14,12 @@ namespace Sandwych.SmartConfig.Esptouch
 
         public override IEnumerable<(string key, object value)> GetDefaultOptions()
         {
-            yield return (StandardProperties.BroadcastingTargetPort, 7001);
-            yield return (StandardProperties.ListeningPort, 18266);
-            yield return (StandardProperties.FrameInterval, TimeSpan.FromMilliseconds(8));
-            yield return (StandardProperties.SegmentInterval, TimeSpan.FromMilliseconds(8));
-            yield return (StandardProperties.GuideCodeTimeout, TimeSpan.FromSeconds(2));
-            yield return (EspProperties.DatumPeriodTimeout, TimeSpan.FromSeconds(4));
+            yield return (StandardOptionNames.BroadcastingTargetPort, 7001);
+            yield return (StandardOptionNames.ListeningPort, 18266);
+            yield return (StandardOptionNames.FrameInterval, TimeSpan.FromMilliseconds(8));
+            yield return (StandardOptionNames.SegmentInterval, TimeSpan.FromMilliseconds(8));
+            yield return (StandardOptionNames.GuideCodeTimeout, TimeSpan.FromSeconds(2));
+            yield return (EspOptionNames.DatumPeriodTimeout, TimeSpan.FromSeconds(4));
         }
 
         public override IProcedureEncoder CreateProcedureEncoder()

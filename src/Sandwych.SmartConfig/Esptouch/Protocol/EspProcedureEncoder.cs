@@ -8,9 +8,9 @@ namespace Sandwych.SmartConfig.Esptouch.Protocol
     {
         public IEnumerable<Segment> Encode(SmartConfigContext context, SmartConfigArguments args)
         {
-            var guideTimeout = context.GetOption<TimeSpan>(StandardProperties.GuideCodeTimeout);
-            var datumTimeout = context.GetOption<TimeSpan>(EspProperties.DatumPeriodTimeout);
-            var frameInterval = context.GetOption<TimeSpan>(StandardProperties.FrameInterval);
+            var guideTimeout = context.GetOption<TimeSpan>(StandardOptionNames.GuideCodeTimeout);
+            var datumTimeout = context.GetOption<TimeSpan>(EspOptionNames.DatumPeriodTimeout);
+            var frameInterval = context.GetOption<TimeSpan>(StandardOptionNames.FrameInterval);
 
             var datumEncoder = new EspDatumFrameEncoder();
             var segFrames = new Segment[]
