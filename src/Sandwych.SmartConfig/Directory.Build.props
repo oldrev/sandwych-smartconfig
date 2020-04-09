@@ -5,7 +5,7 @@
     <AssemblyTitle>Sandwych.SmartConfig</AssemblyTitle>
     <Description>Pure C# Implementation of Various WiFi SmartConfig Protocols: AirKiss and ESPTouch</Description>
     <BuildNumber Condition="'$(BuildNumber)' == ''">0</BuildNumber>
-    <VersionPrefix>1.0.0-beta-$(BuildNumber)</VersionPrefix>
+    <VersionPrefix>1.0.0-$(BuildNumber)</VersionPrefix>
     <VersionSuffix></VersionSuffix>
     <PackageId>Sandwych.SmartConfig</PackageId>
     <PackageTags>smartconfig, airkiss, esptouch, esp8266, esp32, xamarin</PackageTags>
