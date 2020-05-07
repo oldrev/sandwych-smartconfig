@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Protocol;
+using Sandwych.SmartConfig.Protocol;
 using Sandwych.SmartConfig.Util;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +13,7 @@ namespace Sandwych.SmartConfig.Airkiss.Protocol
 
             var crc = new Crc8();
             crc.Update((byte)(index & 0x7F));
-            foreach (var b in bytes)
-            {
-                crc.Update(b);
-            }
+            crc.Update(bytes);
 
             frames.Add((ushort)(0x80 | (crc.Value & 0x7F)));
             frames.Add((ushort)(0x80 | index));

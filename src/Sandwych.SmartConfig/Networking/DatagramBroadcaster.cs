@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Protocol;
+using Sandwych.SmartConfig.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +34,8 @@ namespace Sandwych.SmartConfig.Networking
 
             try
             {
+                this._isStarted = true;
+
                 _broadcastTarget = new IPEndPoint(IPAddress.Broadcast, context.GetOption<int>(StandardOptionNames.BroadcastingTargetPort));
                 var encoder = context.Provider.CreateProcedureEncoder();
                 var segments = encoder.Encode(context, args);
