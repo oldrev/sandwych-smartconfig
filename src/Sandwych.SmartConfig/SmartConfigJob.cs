@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Networking;
+using Sandwych.SmartConfig.Networking;
 using System;
 using System.Net;
 using System.Threading;
@@ -17,7 +17,7 @@ namespace Sandwych.SmartConfig
     {
         private bool _isStarted = false;
         private readonly IDatagramBroadcaster _broadcaster = new DatagramBroadcaster();
-        private readonly DatagramReceiver _receiver;
+        private readonly IDatagramReceiver _receiver = new DatagramReceiver();
 
         public static TimeSpan TimeInterval { get; } = TimeSpan.FromSeconds(1);
 
@@ -38,8 +38,6 @@ namespace Sandwych.SmartConfig
         public SmartConfigJob(TimeSpan timeout)
         {
             this.Timeout = timeout;
-            _broadcaster = new DatagramBroadcaster();
-            _receiver = new DatagramReceiver();
 
             this._timer.Elapsed += Timer_Elapsed;
         }
@@ -110,7 +108,7 @@ namespace Sandwych.SmartConfig
 
 
         #region IDisposable Support
-        private bool _isDdisposed = false; // To detect redundant calls
+        private bool _isDisposed = false; // To detect redundant calls
 
         public void Close()
         {
@@ -119,7 +117,7 @@ namespace Sandwych.SmartConfig
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!_isDdisposed)
+            if (!_isDisposed)
             {
                 if (disposing)
                 {
@@ -127,7 +125,7 @@ namespace Sandwych.SmartConfig
                     _receiver.Dispose();
                     _broadcaster.Dispose();
                 }
-                _isDdisposed = true;
+                _isDisposed = true;
             }
         }
 

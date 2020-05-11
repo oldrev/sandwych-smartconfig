@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -8,9 +8,8 @@ namespace Sandwych.SmartConfig
     {
         TimeSpan Timeout { get; }
 
-        Task ExecuteAsync(
-            SmartConfigContext context,
-            SmartConfigArguments args,
-            CancellationToken cancelToken);
+        Task ExecuteAsync(SmartConfigContext context,
+                          SmartConfigArguments args,
+                          CancellationToken cancelToken);
     }
 }
