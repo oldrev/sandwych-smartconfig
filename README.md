@@ -56,10 +56,19 @@ var scArgs = new SmartConfigArguments()
 };
 
 // Do the SmartConfig job
-using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // Set the timeout to 20 seconds
+using (var job = new SmartConfigJob(TimeSpan.FromSeconds(100))) // Set the timeout to 100 seconds
 {
 	await job.ExecuteAsync(ctx, scArgs);
 }
+
+```
+
+Or much simpler if you perfer the callback style:
+
+```csharp
+
+await SmartConfigStarter.StartAsync<EspSmartConfigProvider>(args, 
+	onDeviceDiscovered: (s, e) => Console.WriteLine("Found device: IP={0}    MAC={1}", e.Device.IPAddress, e.Device.MacAddress));
 
 ```
 

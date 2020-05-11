@@ -55,17 +55,26 @@ ctx.DeviceDiscoveredEvent += (s, e) => {
 // 设置配网参数
 var scArgs = new SmartConfigArguments()
 {
-	Ssid = "YourWiFiSSID",
-	Bssid = PhysicalAddress.Parse("10-10-10-10-10-10"),
-	Password = "YourWiFiPassword"
-	LocalAddress = IPAddress.Parse("192.168.1.10")
+	Ssid = "YourWiFiSSID", // 路由器 SSID
+	Bssid = PhysicalAddress.Parse("10-10-10-10-10-10"), // WiFi 路由器 BSSID，ESPTouch 协议需要，Airkiss 协议不需要
+	Password = "YourWiFiPassword", // WiFi 路由器密码
+	LocalAddress = IPAddress.Parse("192.168.1.10") // 手机/PC 已知 IP，ESPTouch 协议需要，Airkiss 协议不需要
 };
 
 // 调用 SmartConfigJob 进行实际的配网
-using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // 设置最长配网时间 20秒
+using (var job = new SmartConfigJob(TimeSpan.FromSeconds(100))) // 设置最长配网时间 100秒
 {
 	await job.ExecuteAsync(ctx, scArgs);
 }
+
+```
+
+使用回调风格更加简单：
+
+```csharp
+
+await SmartConfigStarter.StartAsync<EspSmartConfigProvider>(args, 
+	onDeviceDiscovered: (s, e) => Console.WriteLine("Found device: IP={0}    MAC={1}", e.Device.IPAddress, e.Device.MacAddress));
 
 ```
 
