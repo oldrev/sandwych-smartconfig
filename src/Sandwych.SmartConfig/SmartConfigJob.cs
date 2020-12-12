@@ -45,7 +45,7 @@ namespace Sandwych.SmartConfig
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             this.ExecutedTime = ExecutedTime.Add(TimeSpan.FromMilliseconds(_timer.Interval));
-            this.Elapsed(this, new SmartConfigTimerEventArgs(this.Timeout, this.ExecutedTime));
+            this.Elapsed?.Invoke(this, new SmartConfigTimerEventArgs(this.Timeout, this.ExecutedTime));
             if (this.LeftTime <= TimeSpan.Zero)
             {
                 if (_timer.Enabled)
@@ -71,7 +71,7 @@ namespace Sandwych.SmartConfig
             try
             {
                 _timer.Start();
-                this.Elapsed(this, new SmartConfigTimerEventArgs(this.Timeout, this.ExecutedTime));
+                this.Elapsed?.Invoke(this, new SmartConfigTimerEventArgs(this.Timeout, this.ExecutedTime));
 
                 var broadcastingTask = _broadcaster.BroadcastAsync(context, args, linkedCts.Token).CancelOnFaulted(linkedCts);
                 var receivingTask = _receiver.ListenAsync(context, linkedCts.Token).CancelOnFaulted(linkedCts);
