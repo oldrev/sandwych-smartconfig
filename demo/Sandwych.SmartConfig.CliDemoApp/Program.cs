@@ -46,6 +46,7 @@ namespace Sandwych.SmartConfig.CliDemoApp
                 Console.WriteLine("Cannot find any available WiFi adapter.");
                 return -1;
             }
+            Console.WriteLine("WiFi interface: {0}", wifiInterface.Name);
 
             var localAddress = GetIPv4AddressOrDefault(wifiInterface);
             if(localAddress == null)
@@ -53,6 +54,7 @@ namespace Sandwych.SmartConfig.CliDemoApp
                 Console.WriteLine("Cannot find IPv4 address for WiFi interface: {0}", wifiInterface.Name);
                 return -1;
             }
+            Console.WriteLine("Local address: {0}", localAddress);
 
             var provider = new EspSmartConfigProvider();
             var ctx = provider.CreateContext();
@@ -71,7 +73,7 @@ namespace Sandwych.SmartConfig.CliDemoApp
             };
 
             // Do the SmartConfig job
-            using (var job = new SmartConfigJob(TimeSpan.FromSeconds(100))) // Set the timeout to 20 seconds
+            using (var job = new SmartConfigJob(TimeSpan.FromSeconds(20))) // Set the timeout to 20 seconds
             {
                 job.Elapsed += Job_Elapsed;
 
@@ -87,7 +89,7 @@ namespace Sandwych.SmartConfig.CliDemoApp
             Console.WriteLine("\nUSAGE:");
             Console.WriteLine("sccli.exe <AP SSID> <AP BSSID> <AP Password>");
             Console.WriteLine("\tAP SSID:\tThe SSID of your WiFi AP.");
-            Console.WriteLine("\tAP BSSID:\tThe BSSID(MAC) of your WiFi AP, like '10-10-10-10-10-10'");
+            Console.WriteLine("\tAP BSSID:\tThe BSSID(MAC) of your WiFi AP, like '10-10-10-10-10-10' or '10:10:10:10:10:10'");
             Console.WriteLine("\tAP Password:\tThe password of your WiFi AP.");
             Console.WriteLine("\nTIPS:");
             Console.WriteLine("\tOn Windows you can get BSSID by using command 'netsh wlan show interfaces'");

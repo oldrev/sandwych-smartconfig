@@ -74,7 +74,7 @@ namespace Sandwych.SmartConfig
                 this.Elapsed?.Invoke(this, new SmartConfigTimerEventArgs(this.Timeout, this.ExecutedTime));
 
                 var broadcastingTask = _broadcaster.BroadcastAsync(context, args, linkedCts.Token).CancelOnFaulted(linkedCts);
-                var receivingTask = _receiver.ListenAsync(context, linkedCts.Token).CancelOnFaulted(linkedCts);
+                var receivingTask = _receiver.ListenAsync(context, args.LocalAddress, linkedCts.Token).CancelOnFaulted(linkedCts);
                 await Task.WhenAll(broadcastingTask, receivingTask);
             }
             catch (OperationCanceledException ocex)

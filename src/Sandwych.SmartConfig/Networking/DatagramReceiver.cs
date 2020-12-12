@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Esptouch;
+using Sandwych.SmartConfig.Esptouch;
 using Sandwych.SmartConfig.Util;
 using System;
 using System.Net;
@@ -27,7 +27,7 @@ namespace Sandwych.SmartConfig.Networking
         }
 
         public async Task ListenAsync(
-            SmartConfigContext context, CancellationToken cancelToken)
+            SmartConfigContext context, IPAddress localAddress, CancellationToken cancelToken)
         {
             if (_isStarted)
             {
@@ -37,7 +37,7 @@ namespace Sandwych.SmartConfig.Networking
             _isStarted = true;
             try
             {
-                this.SetupSocket(context);
+                this.SetupSocket(context, localAddress);
                 _reportedDeviceIPAddresses.Clear();
                 await this.ListenUntilCancelledAsync(context).WithCancellation(cancelToken);
             }
@@ -47,10 +47,10 @@ namespace Sandwych.SmartConfig.Networking
             }
         }
 
-        private void SetupSocket(SmartConfigContext context)
+        private void SetupSocket(SmartConfigContext context, IPAddress localAddress)
         {
             var listeningPort = context.GetOption<int>(StandardOptionNames.ListeningPort);
-            _listeningSocket.Bind(new IPEndPoint(IPAddress.Any, listeningPort));
+            _listeningSocket.Bind(new IPEndPoint(localAddress, listeningPort));
         }
 
         private async Task ListenUntilCancelledAsync(SmartConfigContext context)
