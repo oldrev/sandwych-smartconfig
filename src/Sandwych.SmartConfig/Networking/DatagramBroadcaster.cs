@@ -74,10 +74,16 @@ namespace Sandwych.SmartConfig.Networking
                         await this.BroadcastSegmentUntilAsync(
                             context, segment, broadcastBuffer, userCancelToken);
                     }
-                    await Task.Delay(segmentInterval, userCancelToken);
+                    if (segmentInterval > TimeSpan.Zero)
+                    {
+                        await Task.Delay(segmentInterval, userCancelToken);
+                    }
                 }
 
-                await Task.Delay(segmentInterval, userCancelToken);
+                if (segmentInterval > TimeSpan.Zero)
+                {
+                    await Task.Delay(segmentInterval, userCancelToken);
+                }
             }
         }
 
@@ -98,6 +104,7 @@ namespace Sandwych.SmartConfig.Networking
             var segmentInterval = context.GetOption<TimeSpan>(StandardOptionNames.FrameInterval);
             for (int i = 0; i < segment.BroadcastingMaxTimes; i++)
             {
+                token.ThrowIfCancellationRequested();
                 await this.BroadcastSingleSegmentAsync(segment, broadcastBuffer, segmentInterval, token);
             }
         }
