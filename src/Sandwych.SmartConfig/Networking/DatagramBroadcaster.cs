@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Protocol;
+using Sandwych.SmartConfig.Protocol;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +34,9 @@ namespace Sandwych.SmartConfig.Networking
 
             try
             {
+                this._isStarted = true;
+
+                _broadcastingSocket.Bind(new IPEndPoint(args.LocalAddress, 0));
                 _broadcastTarget = new IPEndPoint(IPAddress.Broadcast, context.GetOption<int>(StandardOptionNames.BroadcastingTargetPort));
                 var encoder = context.Provider.CreateProcedureEncoder();
                 var segments = encoder.Encode(context, args);
@@ -68,22 +71,8 @@ namespace Sandwych.SmartConfig.Networking
                     }
                     else
                     {
-                        var timerTask = Task.Delay(segment.BroadcastingPeriod, userCancelToken);
-                        using (var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(userCancelToken))
-                        {
-                            linkedCts.CancelAfter(segment.BroadcastingPeriod);
-                            try
-                            {
-                                await this.BroadcastSegmentForeverAsync(context, segment, broadcastBuffer, linkedCts.Token);
-                            }
-                            catch (OperationCanceledException ocex)
-                            {
-                                if (userCancelToken.IsCancellationRequested)
-                                {
-                                    throw ocex;
-                                }
-                            }
-                        }
+                        await this.BroadcastSegmentUntilAsync(
+                            context, segment, broadcastBuffer, userCancelToken);
                     }
                     await Task.Delay(segmentInterval, userCancelToken);
                 }
@@ -92,11 +81,12 @@ namespace Sandwych.SmartConfig.Networking
             }
         }
 
-        private async Task BroadcastSegmentForeverAsync(
+        private async Task BroadcastSegmentUntilAsync(
             SmartConfigContext context, Segment segment, byte[] broadcastBuffer, CancellationToken token)
         {
             var segmentInterval = context.GetOption<TimeSpan>(StandardOptionNames.SegmentInterval);
-            while (true)
+            var endTime = TimeSpan.FromMilliseconds(Environment.TickCount) + segment.BroadcastingPeriod;
+            while ((TimeSpan.FromMilliseconds(Environment.TickCount) <= endTime) && !token.IsCancellationRequested)
             {
                 await this.BroadcastSingleSegmentAsync(segment, broadcastBuffer, segmentInterval, token);
             }

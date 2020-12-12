@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandwych.SmartConfig", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandwych.SmartConfig.AndroidDemoApp", "demo\Sandwych.SmartConfig.AndroidDemoApp\Sandwych.SmartConfig.AndroidDemoApp.csproj", "{4B7AA7C1-C490-4E29-A8B5-AF6E42F55F99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandwych.SmartConfig.CliDemoApp", "demo\Sandwych.SmartConfig.CliDemoApp\Sandwych.SmartConfig.CliDemoApp.csproj", "{5CBEA915-C15F-4074-8850-ACB0B9EB94F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{4B7AA7C1-C490-4E29-A8B5-AF6E42F55F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B7AA7C1-C490-4E29-A8B5-AF6E42F55F99}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4B7AA7C1-C490-4E29-A8B5-AF6E42F55F99}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5CBEA915-C15F-4074-8850-ACB0B9EB94F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CBEA915-C15F-4074-8850-ACB0B9EB94F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CBEA915-C15F-4074-8850-ACB0B9EB94F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CBEA915-C15F-4074-8850-ACB0B9EB94F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

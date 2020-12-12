@@ -1,6 +1,7 @@
-﻿using Sandwych.SmartConfig.Protocol;
+using Sandwych.SmartConfig.Protocol;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
 
@@ -10,8 +11,7 @@ namespace Sandwych.SmartConfig.Airkiss.Protocol
     {
         public PhysicalAddress ParseMacAddress(byte[] packet)
         {
-            var span = new ReadOnlySpan<byte>(packet);
-            var macSpan = span.Slice(1, 6);
+            var macSpan = new ArraySegment<byte>(packet, 1, 6);
             return new PhysicalAddress(macSpan.ToArray());
         }
 
