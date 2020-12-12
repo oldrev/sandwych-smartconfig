@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Esptouch.Protocol;
+using Sandwych.SmartConfig.Esptouch.Protocol;
 using Sandwych.SmartConfig.Protocol;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Sandwych.SmartConfig.Esptouch
         {
             yield return (StandardOptionNames.BroadcastingTargetPort, 7001);
             yield return (StandardOptionNames.ListeningPort, 18266);
-            yield return (StandardOptionNames.FrameInterval, TimeSpan.FromMilliseconds(8));
+            yield return (StandardOptionNames.FrameInterval, TimeSpan.Zero);
             yield return (StandardOptionNames.SegmentInterval, TimeSpan.FromMilliseconds(8));
             yield return (StandardOptionNames.GuideCodeTimeout, TimeSpan.FromSeconds(2));
             yield return (EspOptionNames.DatumPeriodTimeout, TimeSpan.FromSeconds(4));

@@ -41,20 +41,5 @@ namespace Sandwych.SmartConfig.Networking
             _udp.Dispose();
         }
 
-        private static int GetFirstWifiInterfaceIndex()
-        {
-            var adapters = NetworkInterface.GetAllNetworkInterfaces();
-            var wifi = adapters.Where(
-                x => x.NetworkInterfaceType == NetworkInterfaceType.Wireless80211
-                && x.OperationalStatus == OperationalStatus.Up
-                && !x.IsReceiveOnly
-            ).FirstOrDefault();
-            if(wifi == null)
-            {
-                throw new IOException("Cannot find available WiFi interface");
-            }
-            return wifi.GetIPProperties().GetIPv4Properties().Index;
-        }
-
     }
 }

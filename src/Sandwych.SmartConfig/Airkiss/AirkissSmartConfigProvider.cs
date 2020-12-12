@@ -1,4 +1,4 @@
-﻿using Sandwych.SmartConfig.Airkiss.Protocol;
+using Sandwych.SmartConfig.Airkiss.Protocol;
 using Sandwych.SmartConfig.Protocol;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace Sandwych.SmartConfig.Airkiss
         {
             yield return (StandardOptionNames.BroadcastingTargetPort, 10001); // The port to broadcast doesn't matter
             yield return (StandardOptionNames.ListeningPort, 10000);
-            yield return (StandardOptionNames.FrameInterval, TimeSpan.FromMilliseconds(0));
+            yield return (StandardOptionNames.FrameInterval, TimeSpan.Zero);
             yield return (StandardOptionNames.SegmentInterval, TimeSpan.FromMilliseconds(5));
             yield return (StandardOptionNames.GuideCodeTimeout, TimeSpan.FromSeconds(2));
 
