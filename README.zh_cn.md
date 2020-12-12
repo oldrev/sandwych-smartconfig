@@ -58,7 +58,10 @@ var scArgs = new SmartConfigArguments()
 	Ssid = "YourWiFiSSID", // 路由器 SSID
 	Bssid = PhysicalAddress.Parse("10-10-10-10-10-10"), // WiFi 路由器 BSSID，ESPTouch 协议需要，Airkiss 协议不需要
 	Password = "YourWiFiPassword", // WiFi 路由器密码
-	LocalAddress = IPAddress.Parse("192.168.1.10") // 手机/PC 已知 IP，ESPTouch 协议需要，Airkiss 协议不需要
+
+	// 手机/PC 的本机 IP，如果有多个网卡，这里必须是 WiFi 网络的本机 IP
+	// 获取本机 WiFi IP 可参见 CliDemoApp 演示程序
+	LocalAddress = IPAddress.Parse("192.168.1.10") 
 };
 
 // 调用 SmartConfigJob 进行实际的配网

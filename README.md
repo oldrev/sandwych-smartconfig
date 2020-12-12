@@ -52,7 +52,10 @@ var scArgs = new SmartConfigArguments()
 	Ssid = "YourWiFiSSID",
 	Bssid = PhysicalAddress.Parse("10-10-10-10-10-10"),
 	Password = "YourWiFiPassword",
-	LocalAddress = IPAddress.Parse("192.168.1.10")
+
+	// Your local IP address of WiFi network. It's important for using multiple network interfaces
+	// See CliDemoApp for details.
+	LocalAddress = IPAddress.Parse("192.168.1.10") 
 };
 
 // Do the SmartConfig job
