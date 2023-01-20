@@ -11,8 +11,11 @@ namespace Sandwych.SmartConfig.Esptouch.Protocol
     {
         public const int ExtraHeaderLength = 5;
         public const ushort ExtraLength = 40;
+        public const int FramesPerByte = 3;
 
         private List<ushort> _framesBuilder = new List<ushort>(128);
+
+        public int DataCodeCount => _framesBuilder.Count / FramesPerByte;
 
         public IEnumerable<ushort> Encode(SmartConfigContext ctx, SmartConfigArguments args)
         {
@@ -86,7 +89,7 @@ namespace Sandwych.SmartConfig.Esptouch.Protocol
 
         private void AppendByte(byte b)
         {
-            this.AppendByte(_framesBuilder.Count / 3, b);
+            this.AppendByte(this.DataCodeCount, b);
         }
 
         private void AppendByte(int frameIndex, byte b)
@@ -123,23 +126,21 @@ namespace Sandwych.SmartConfig.Esptouch.Protocol
             this.AppendBytes(stationPassword);
             this.AppendBytes(ssid);
 
-            var bssidPos = ExtraHeaderLength;
-            for (int i = 0; i < bssid.Length; i++)
+            var bssidInsertIndex = ExtraHeaderLength;
+            for (var i = 0; i < bssid.Length; i++)
             {
-                int frameIndex = totalLength + i;
+                var frameIndex = totalLength + i;
                 var byteValue = bssid[i];
-                var codeCount = _framesBuilder.Count / 3;
-                if (bssidPos >= codeCount)
+                var fs = ByteToFrames(frameIndex, byteValue);
+                if (bssidInsertIndex >= this.DataCodeCount)
                 {
-                    this.AppendByte(byteValue);
+                    _framesBuilder.AddRange(fs);
                 }
                 else
                 {
-                    var fs = ByteToFrames(frameIndex, byteValue);
-                    var framesInsertPos = bssidPos * 3;
-                    _framesBuilder.InsertRange(framesInsertPos, fs);
+                    _framesBuilder.InsertRange(bssidInsertIndex * FramesPerByte, fs);
                 }
-                bssidPos += 4;
+                bssidInsertIndex += 4;
             }
         }
     }
